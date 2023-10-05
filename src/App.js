@@ -33,35 +33,39 @@ const App = () => {
   const [showImages, setShowImages] = useState(false);
   const [projects, setProjects] = useState([]);
 
+ 
+
+  const url = process.env.REACT_APP_API_URL;
+  
   const handleShowImages = () => {
     setShowImages(true);
   };
 
   useEffect(() => {
     // Fetch skills data
-    axios.get("http://localhost:5000/api/skills").then((response) => {
+    axios.get(`${url}/api/skills`).then((response) => {
       setSkills(response.data);
     });
-    axios.get("http://localhost:5000/api/education").then((response) => {
+    axios.get(`${url}/api/education`).then((response) => {
       setEducations(response.data);
     });
-    axios.get("http://localhost:5000/api/experience").then((response) => {
+    axios.get(`${url}/api/experience`).then((response) => {
       setExperiences(response.data);
     });
-    axios.get("http://localhost:5000/api/projects").then((response) => {
+    axios.get(`${url}/api/projects`).then((response) => {
       setProjects(response.data);
     });
   }, []);
 
   const handleSkillSubmit = (formData) => {
     axios
-      .post("http://localhost:5000/api/skills/upload", formData, {
+      .post(`${url}/api/skills/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Set the content type for FormData
         },
       })
       .then((response) => {
-        axios.get("http://localhost:5000/api/skills").then((response) => {
+        axios.get(`${url}/api/skills`).then((response) => {
           setSkills(response.data);
         });
       })
@@ -75,10 +79,10 @@ const App = () => {
 
   const handleEducationSubmit = (educationData) => {
     axios
-      .post("http://localhost:5000/api/education", educationData)
+      .post(`${url}/api/education`, educationData)
       .then((response) => {
         // Refresh the education list
-        axios.get("http://localhost:5000/api/education").then((response) => {
+        axios.get(`${url}/api/education`).then((response) => {
           setEducations(response.data);
         });
       })
@@ -89,10 +93,10 @@ const App = () => {
 
   const handleExperienceSubmit = (experienceData) => {
     axios
-      .post("http://localhost:5000/api/experience", experienceData)
+      .post(`${url}/api/experience`, experienceData)
       .then((response) => {
         // Refresh the education list
-        axios.get("http://localhost:5000/api/experience").then((response) => {
+        axios.get(`${url}/api/experience`).then((response) => {
           setExperiences(response.data);
         });
       })
@@ -102,10 +106,10 @@ const App = () => {
   };
   const handleProjectSubmit = (projectData) => {
     axios
-      .post("http://localhost:5000/api/projects", projectData)
+      .post(`${url}/api/projects`, projectData)
       .then((response) => {
         // Refresh the projects list
-        axios.get("http://localhost:5000/api/projects").then((response) => {
+        axios.get(`${url}/api/projects`).then((response) => {
           setProjects(response.data);
         });
       })
