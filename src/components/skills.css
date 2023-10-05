@@ -20,13 +20,19 @@
       background-color:white;
       width:fit-content;
       background-size: cover;
-      margin-right: 10px;
       padding-right: 150px;
     }
     .cont-img:hover {
       transform: scale(1.2); /* Enlarges the element on hover */
     }
+    @media screen and (max-width:600px){
+      .skill-name{
+        text-align: center;
+        margin-right:50px;
+      }
+    }
 .skill-name{
+  text-align: center;
   margin:15px;
 }
 

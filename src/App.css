@@ -46,6 +46,7 @@ li {
   height: fit-content;
 	margin:40px;
 	color: #79A1D9;
+  text-align: left;
 }
 
 .flip-card {
@@ -263,7 +264,10 @@ h1 {
   .card2 {
     display: none;
   }
-
+  .skill-name{
+    text-align: center;
+    margin-right:50px;
+  }
   .container1 {
     display: flex;
     flex-wrap: wrap;
