@@ -12,12 +12,13 @@ const LoginPage = () => {
   const [checkMessage, setCheckMessage] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
 
-  
+  const url = process.env.REACT_APP_API_URL;
+
 
   const handleCheck = async () => {
     try {
       // Send a POST request to the backend to check for existing users
-      const response = await axios.post('http://localhost:5000/api/users/check', {
+      const response = await axios.post(`${url}/api/users/check`, {
         username: checkUsername, // Use the check username
         pass: checkPass,         // Use the check password
       });
